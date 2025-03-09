@@ -1,0 +1,42 @@
+type Author {
+  id: Int!
+  name: String!
+  birthdate: String!
+  books: [Book!]!
+}
+
+type Book {
+  id: Int!
+  title: String!
+  publicationYear: Int!
+  author: Author!
+  reviews: [Review!]!
+}
+
+type Mutation {
+  createAuthor(name: String!, birthdate: String!): Author!
+  createBook(title: String!, publicationYear: Int!, authorId: Int!): Book!
+  createPublisher(name: String!, country: String!): Publisher!
+  addReview(bookId: Int!, reviewerName: String!, content: String!): Review!
+}
+
+type Publisher {
+  id: Int!
+  name: String!
+  country: String!
+  publishedBooks: [Book!]!
+}
+
+type Query {
+  authors(orderBy: String = null): [Author!]!
+  books(authorId: Int = null, orderBy: String = null): [Book!]!
+  publishers: [Publisher!]!
+  reviews(bookId: Int = null): [Review!]!
+}
+
+type Review {
+  id: Int!
+  reviewerName: String!
+  content: String!
+  book: Book!
+}

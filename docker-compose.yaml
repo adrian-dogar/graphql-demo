@@ -1,0 +1,7 @@
+services:
+  book-library:
+    build: .
+    ports:
+      - "8777:8000"
+    volumes:
+      - ./:/project/

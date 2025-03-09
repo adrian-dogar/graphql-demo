@@ -1,0 +1,97 @@
+{
+	"info": {
+		"_postman_id": "69a939ff-d5aa-4e2e-b750-4c1623c73e1f",
+		"name": "graphql-demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6525403"
+	},
+	"item": [
+		{
+			"name": "root",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8777",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8777"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "web client",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8777/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8777",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAuthorsWithBooks",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "{\n  authors(orderBy: \"name\") {\n    name\n    birthdate\n    books {\n      title\n      publicationYear\n      reviews {\n        id\n      }\n    }\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8777/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8777",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  createBook(title: \"GraphQL in Action\", publicationYear: 2023, authorId: 1) {\n    id\n    title\n    publicationYear\n    author {\n      id\n      name\n    }\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8777/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8777",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
